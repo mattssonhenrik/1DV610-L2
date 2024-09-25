@@ -1,17 +1,16 @@
-// import { formInput } from "./inputFromBrowser/inputFromBrowser.js"
+// index.js
+// Author: Henrik Mattsson
+
+import { getFormInput } from "./inputFromBrowser/inputFromBrowser.js"
 
 let isInputInCorrectformat = true
 
-let formInputValueReference = document.querySelector("input")
-let formInputValue = ''
-export let formInput = document.querySelector("form").addEventListener("submit", event => {
+let testButtonElement = document.querySelector("#test-button")
+testButtonElement.addEventListener("click", (event) => {
+    let formInput = getFormInput()
     event.preventDefault()
-    formInputValue = formInputValueReference.value
-    console.log(formInputValue)
-    console.log("did this formInput fire?")
-    // formInputValue = ''
+    console.log('test-button says the value is = ' + formInput)
+    console.log('this eventlistener is firing')
 })
 
-console.log("index.js has fired")
-console.log("Well now inputForm is firing from index.js" + formInput)
-
+console.log('index.js has fired')

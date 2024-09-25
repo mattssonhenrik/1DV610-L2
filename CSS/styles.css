@@ -3,6 +3,7 @@ html, body {
     width: 100wv;
     display:flex;
     justify-content:center;
+    flex-direction:column;
 }
 
 #form-wrapper {
@@ -18,4 +19,12 @@ html, body {
     flex-direction:column;
     justify-content: center;
     align-items:center;
+}
+
+#test-button {
+    background-color:black;
+    color: white;
+    padding: 15px;
+    width: 300px;
+    margin-right: auto;
 }

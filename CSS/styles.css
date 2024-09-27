@@ -6,7 +6,7 @@ html, body {
     flex-direction:column;
 }
 
-#form-wrapper {
+#input-wrapper {
     display:flex;
     flex-grow: 1;
     flex-direction: column;
@@ -14,17 +14,6 @@ html, body {
     align-items:center;
 }
 
-#form-input {
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items:center;
-}
-
-#test-button {
-    background-color:black;
-    color: white;
-    padding: 15px;
-    width: 300px;
-    margin-right: auto;
+#input {
+    background-color: #FAFAFA;
 }

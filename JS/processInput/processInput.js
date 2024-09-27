@@ -20,7 +20,7 @@ browserInput.inputElement.addEventListener('keyPressed', (event) => {
 })
 
 browserInput.inputElement.addEventListener('checkValidityOfKey', (event) => {
-    if (selectedKeyToProcess === 'a') {
+    if (selectedKeyToProcess === '[a-z]') {
         console.log('correct, a is the character')
     } else {
         console.log('wrong, the stated character is not a')

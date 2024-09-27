@@ -9,7 +9,8 @@ let totalKeysSelected = ''
 // https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events
 
 inputElement.addEventListener("keydown", event => {
-    storeinputKeyPress(event)
+    storeKeyPress(event)
+
     inputElement.dispatchEvent(new CustomEvent('keyPressed',
         {
             detail: {
@@ -20,7 +21,7 @@ inputElement.addEventListener("keydown", event => {
     ))
 })
 
-function storeinputKeyPress (event) {
+function storeKeyPress (event) {
     keySelected = event.key
     totalKeysSelected += event.key
 }

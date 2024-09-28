@@ -1,7 +1,12 @@
 // index.js
 // Author: Henrik Mattsson
 
-// import { getFormInput } from "./browserInput/browserInput.js"
-import * as processInput from './processInput/processInput.js'
+import { InputProcessor } from './processInput/processInput.js'
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputProcessor = new InputProcessor()
+})
+
+console.log('index.js is loaded')
 
 let isInputInCorrectformat = true

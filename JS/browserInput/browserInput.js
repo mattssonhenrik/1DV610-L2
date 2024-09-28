@@ -1,37 +1,37 @@
 // browserInput.js
 // Author: Henrik Mattsson
 
-export let inputElement = document.querySelector("input")
-let keySelected = '' 
-let totalKeysSelected = ''
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event
-// https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events
 
-inputElement.addEventListener("keydown", event => {
-    storeKeyPress(event)
+export class BrowserInput {
+    constructor() {
+        this.inputElement = document.querySelector("input")
+        this.keySelected = ''
+        this.totalKeysSelected = ''
+        
+        this.inputElement.addEventListener("keydown", event => {
+            this.storeKeyPress(event)
+        })
+    }
 
-    inputElement.dispatchEvent(new CustomEvent('keyPressed',
-        {
-            detail: {
-                keySelected: keySelected,
-                totalKeysSelected: totalKeysSelected
+    storeKeyPress(event) {
+        this.keySelected = event.key
+        this.totalKeysSelected += event.key
+    
+        this.inputElement.dispatchEvent(new CustomEvent('keyPressed',
+            {
+                detail: {
+                    keySelected: this.keySelected,
+                    totalKeysSelected: this.totalKeysSelected
+                }
             }
-        }
-    ))
-})
-
-function storeKeyPress (event) {
-    keySelected = event.key
-    totalKeysSelected += event.key
+        ))
+    }
+    getKeyPress() {
+        return this.keySelected
+    }
+    
+    getTotalKeysSelected() {
+        return this.totalKeysSelected
+    }
 }
-
-export function getKeyPress () {
-    return keySelected
-}
-
-export function getTotalKeysSelected () {
-    return totalKeysSelected
-}
-// https://www.w3schools.com/jsref/event_oninput.asp
-

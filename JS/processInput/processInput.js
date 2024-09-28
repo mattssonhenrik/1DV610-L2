@@ -33,19 +33,14 @@ export class InputProcessor {
     }
 
     checkValidityOfKey(event) {
-        if (this.selectedKey === '[a-z]') {
-            console.log('correct, a is the character')
+        const regularExpression = new RegExp("[^a-zA-Z]")
+        if (regularExpression.test(this.selectedKey)) {
+            console.log('The character is not a-z, A-Z, 0-9')
         } else {
-            console.log('wrong, the stated character is not a')
+            console.log('Valid character!')
         }
     } 
 }
-
-
-
-
-
-
 
 
 // let keySelected = browserInput.getKeyPress()

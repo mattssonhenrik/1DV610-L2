@@ -12,9 +12,6 @@ export class BrowserInput {
         })
     }
 
-
-    // Endast lagra tangent om det är en valid character?
-
     storeKeyPress(event) {
         if (event.key === 'Backspace') {
             console.log('EVENT KEY IS BACKSPACE!!')
@@ -32,7 +29,6 @@ export class BrowserInput {
             ))
         }
     
-
     }
     getKeyPress() {
         return this.keySelected

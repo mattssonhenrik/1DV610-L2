@@ -3,8 +3,8 @@
 
 export class RuleForInput {
     constructor() {
-        this.lowerAndUpperLettersPlusNumbers = false
-        this.lowerLetters = true
+        this.lowerAndUpperLettersPlusNumbers = true
+        this.lowerLetters = false
         this.upperLetters = false
         this.numbers = false
     }

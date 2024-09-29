@@ -8,7 +8,7 @@ import { BrowserInputUX } from '../browserInputUX/browserInputUX.js'
 export class InputProcessor {
     constructor() {
         this.selectedKey = ''
-        this.selectedWord = ''
+        this.totaltKeysSelected = ''
         this.currentRule = ''
 
         this.browserInput = new BrowserInput()
@@ -21,6 +21,10 @@ export class InputProcessor {
         this.browserInput.inputElement.addEventListener('checkValidityOfKey', (event) => {
             this.checkValidityOfKey(event)
         })
+        this.browserInput.inputElement.addEventListener('checkForInvalidCharacters', (event) => {
+            console.log('Checking for invalid characters from listener checkForInvalidCharacters')
+            this.checkForInvalidKeys()
+        })
 
     }
 
@@ -30,6 +34,7 @@ export class InputProcessor {
         console.log(event.detail.keySelected)
         console.log(event.detail.totalKeysSelected)
         this.selectedKey = event.detail.keySelected 
+        this.totaltKeysSelected = event.detail.totalKeysSelected
         this.browserInput.inputElement.dispatchEvent(new CustomEvent('checkValidityOfKey', {
             detail: {
                 keySelected: this.selectedKey
@@ -40,12 +45,28 @@ export class InputProcessor {
     checkValidityOfKey(event) {
         this.currentRule = this.ruleHandler.getChosenRule()
         const regularExpression = new RegExp(this.currentRule)
+
         if (regularExpression.test(this.selectedKey)) {
             console.log('The character is not a-z, A-Z, 0-9')
+            this.inputElementColor.correctInput = false
+            this.inputElementColor.setColor()
         } else {
             console.log('Valid character!')
         }
-    } 
+        this.checkForInvalidKeys()
+    }
+    
+    checkForInvalidKeys() {
+        const regularExpression = new RegExp(this.currentRule)
+        if (!regularExpression.test(this.totaltKeysSelected)) {
+            console.log('hello from testing for invalid characters')
+            this.inputElementColor.correctInput = true
+            this.inputElementColor.setColor()
+            console.log(this.inputElementColor.correctInput)
+        } else {
+            // Behöver ju inte sätta röd färg igen
+        }
+    }
 }
 
 

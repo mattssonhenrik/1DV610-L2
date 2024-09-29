@@ -14,11 +14,20 @@ export class BrowserInput {
 
     storeKeyPress(event) {
         if (event.key === 'Backspace') {
-            console.log('EVENT KEY IS BACKSPACE!!')
-            this.totalKeysSelected = this.totalKeysSelected.slice(0, -1)
+            this.removeLastEntry()
+            this.inputElement.dispatchEvent(new CustomEvent('keyPressed', 
+                {
+                    detail: {
+                        keySelected: this.keySelected,
+                        totalKeysSelected: this.totalKeysSelected
+                    }
+                }
+            ))
         } else {
             this.keySelected = event.key
             this.totalKeysSelected += event.key
+
+
             this.inputElement.dispatchEvent(new CustomEvent('keyPressed',
                 {
                     detail: {
@@ -30,6 +39,11 @@ export class BrowserInput {
         }
     
     }
+
+    removeLastEntry() {
+        this.totalKeysSelected = this.totalKeysSelected.slice(0, -1)
+    }
+
     getKeyPress() {
         return this.keySelected
     }

@@ -2,34 +2,47 @@
 // Author Henrik Mattsson
 
 export class BrowserInputUX {
-    constructor () {
+    constructor() {
         this.inputElement = document.querySelector("input")
         this.correctInput = true
+        this.totalKeysSelected = ''
 
         this.inputElement.addEventListener('keyPressed', (event) => {
-            this.setColor(event)
+            this.totalKeysSelected=event.detail.totalKeysSelected
+            this.setColor()
         })
 
         this.inputElement.style.backgroundColor = "White"
     }
 
-    setColor (event) {
-        console.log(event.detail.totalKeysSelected.length + 'that was the total keys lenght!')
-        if (event.detail.totalKeysSelected.length === 0) {
-            console.log('lets make hte background white')
+
+    setColor() {
+        if (this.totalKeysSelected.length === 0) {
+            this.setColorToWhite()
+        } else if (this.totalKeysSelected.length > 0 && this.correctInput === true) {
+            this.setColorToGreen()
+        } else if (this.totalKeysSelected.length > 0 && this.correctInput === false) {
+            this.setColorToRed()
         } else {
-            console.log('lets do this red or green')
-            this.inputElement.style.backgroundColor = "lightGreen"
-            // https://htmlcolorcodes.com/colors/shades-of-red/ "salmon"
+            this.setColorToGray()
         }
     }
 
+    setColorToWhite() {
+        this.inputElement.style.backgroundColor = "White"
+    }
 
-    // getCorrectInput () {
-    //     return this.correctInput
-    // }
+    setColorToGreen() {
+        this.inputElement.style.backgroundColor = "lightGreen"
+        console.log('hello from setcolortogreen!')
+    }
 
-    // setCorrectInput () {
-    //     this.correctInput = !this.correctInput
-    // }
+    setColorToRed() {
+        this.inputElement.style.backgroundColor = "salmon"
+        console.log('hello from setcolortoSALMON!')
+    }
+
+    setColorToGray() {
+        this.inputelemnent.style.backgroundColor = "gray"
+    }
 }

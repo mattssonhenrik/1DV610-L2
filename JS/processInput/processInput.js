@@ -2,13 +2,16 @@
 // Author: Henrik Mattsson
 
 import { BrowserInput } from '../browserInput/browserInput.js'
+import { RuleForInput } from '../ruleForInput/ruleForInput.js'
 
 export class InputProcessor {
     constructor() {
-        let selectedKey = ''
-        let selectedWord = ''
+        this.selectedKey = ''
+        this.selectedWord = ''
+        this.currentRule = ''
 
         this.browserInput = new BrowserInput()
+        this.ruleHandler = new RuleForInput()
 
         this.browserInput.inputElement.addEventListener('keyPressed', (event) => {
             this.selectedKeyToProcess(event)
@@ -32,8 +35,12 @@ export class InputProcessor {
         }))
     }
 
+
+    // Abstraktionsnivå, funktionsanrop beroende på regel som används. Egen klass för kontroll?
     checkValidityOfKey(event) {
-        const regularExpression = new RegExp("[^a-zA-Z]")
+        this.currentRule = this.ruleHandler.getChosenRule()
+        const regularExpression = new RegExp(this.currentRule)
+        console.log('this is the current rule' + this.currentRule)
         if (regularExpression.test(this.selectedKey)) {
             console.log('The character is not a-z, A-Z, 0-9')
         } else {

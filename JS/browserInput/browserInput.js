@@ -1,8 +1,6 @@
 // browserInput.js
 // Author: Henrik Mattsson
 
-
-
 export class BrowserInput {
     constructor() {
         this.inputElement = document.querySelector("input")
@@ -14,18 +12,27 @@ export class BrowserInput {
         })
     }
 
+
+    // Endast lagra tangent om det är en valid character?
+
     storeKeyPress(event) {
-        this.keySelected = event.key
-        this.totalKeysSelected += event.key
-    
-        this.inputElement.dispatchEvent(new CustomEvent('keyPressed',
-            {
-                detail: {
-                    keySelected: this.keySelected,
-                    totalKeysSelected: this.totalKeysSelected
+        if (event.key === 'Backspace') {
+            console.log('EVENT KEY IS BACKSPACE!!')
+            this.totalKeysSelected = this.totalKeysSelected.slice(0, -1)
+        } else {
+            this.keySelected = event.key
+            this.totalKeysSelected += event.key
+            this.inputElement.dispatchEvent(new CustomEvent('keyPressed',
+                {
+                    detail: {
+                        keySelected: this.keySelected,
+                        totalKeysSelected: this.totalKeysSelected
+                    }
                 }
-            }
-        ))
+            ))
+        }
+    
+
     }
     getKeyPress() {
         return this.keySelected

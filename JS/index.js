@@ -7,5 +7,4 @@ import { BrowserDisplayOutput } from './browserDisplayOutput/browserDisplayOutpu
 document.addEventListener('DOMContentLoaded', () => {
     const inputProcessor = new InputProcessor()
     const browserDisplay = new BrowserDisplayOutput()
-    console.log(browserDisplay.currentRule)
 })

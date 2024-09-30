@@ -11,12 +11,20 @@ export class BrowserDisplayOutput {
         window.addEventListener('load', () => {
             this.checkRules()
         })
+
+        document.addEventListener('incorrectInput', (event) => {
+            this.textField.style.color= "red"
+        })
+
+        document.addEventListener('correctInput', (event) => {
+            this.textField.style.color= "black"
+        })
     }
 
 
     checkRules() {
         if (this.ruleHandler.lowerAndUpperLettersPlusNumbers) {
-            this.textField.textContent = 'Uppercase, lowercase and numbers are valid'
+            this.textField.textContent = 'Upper- and lowercase letters and numbers are valid'
         } else if (this.ruleHandler.lowerLetters) {
             this.textField.textContent = 'Only lowercase letters'
         } else if (this.ruleHandler.upperLetters) {
@@ -28,7 +36,7 @@ export class BrowserDisplayOutput {
         } else if (this.ruleHandler.uppercaseAndNumbers) {
             this.textField.textContent = 'Only uppercase letters and numbers'
         } else {
-            this.textField.textContent = 'Only number (0-9)'
+            this.textField.textContent = 'Only numbers (0-9)'
         }
     }
 }

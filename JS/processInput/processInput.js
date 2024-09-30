@@ -28,8 +28,6 @@ export class InputProcessor {
 
     }
 
-    // Lägga till en if-sats som inte lagrar knapptrycket om det inte är det vi vill ha, absraktionsnivå -> kanske tunnla genom annan funktion först som kollar reglerna. 
-    // If-sats med reguljärt uttryck.
     selectedKeyToProcess(event) {
         console.log(event.detail.keySelected)
         console.log(event.detail.totalKeysSelected)
@@ -49,6 +47,9 @@ export class InputProcessor {
         if (regularExpression.test(this.selectedKey)) {
             this.inputElementColor.correctInput = false
             this.inputElementColor.setColor()
+
+            document.dispatchEvent(new CustomEvent('incorrectInput'))
+    
         } else {
             console.log('Valid character!')
         }
@@ -60,17 +61,9 @@ export class InputProcessor {
         if (!regularExpression.test(this.totaltKeysSelected)) {
             this.inputElementColor.correctInput = true
             this.inputElementColor.setColor()
-            console.log(this.inputElementColor.correctInput)
+            document.dispatchEvent(new CustomEvent('correctInput'))
         } else {
-            // Behöver ju inte sätta röd färg igen
+            // Do nothing for now
         }
     }
 }
-
-
-// let keySelected = browserInput.getKeyPress()
-// let totaltKeysSelected = browserInput.getTotalKeysSelected()
-
-// Kolla endast senaste tangent om booleanen i index.js är true, 
-//om den är falsk kolla istället hela ordet för att säkerställa alla bokstäver lirar.
-// Hur man nu ska gå tillväga att göra det eftersom totalkeys aldrig rensar.

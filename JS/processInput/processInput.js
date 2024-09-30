@@ -47,7 +47,6 @@ export class InputProcessor {
         const regularExpression = new RegExp(this.currentRule)
 
         if (regularExpression.test(this.selectedKey)) {
-            console.log('The character is not a-z, A-Z, 0-9')
             this.inputElementColor.correctInput = false
             this.inputElementColor.setColor()
         } else {
@@ -59,7 +58,6 @@ export class InputProcessor {
     checkForInvalidKeys() {
         const regularExpression = new RegExp(this.currentRule)
         if (!regularExpression.test(this.totaltKeysSelected)) {
-            console.log('hello from testing for invalid characters')
             this.inputElementColor.correctInput = true
             this.inputElementColor.setColor()
             console.log(this.inputElementColor.correctInput)

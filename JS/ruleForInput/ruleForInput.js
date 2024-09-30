@@ -3,10 +3,13 @@
 
 export class RuleForInput {
     constructor() {
-        this.lowerAndUpperLettersPlusNumbers = true
+        this.lowerAndUpperLettersPlusNumbers = false
         this.lowerLetters = false
         this.upperLetters = false
-        this.numbers = false
+        this.lowerAndUpperLetters = false
+        this.lowercaseAndNumbers = false
+        this.uppercaseAndNumbers = true
+        this.numbers = true
     }
 
     getChosenRule () {
@@ -16,6 +19,12 @@ export class RuleForInput {
             return this.getLowerLetters()
         } else if (this.upperLetters) {
             return this.getUpperLetters()
+        } else if (this.lowerAndUpperLetters) {
+            return this.getLowerAndUpperLetters()
+        } else if (this.lowercaseAndNumbers) {
+            return this.getLowercaseAndNumbers()
+        } else  if (this.uppercaseAndNumbers) {
+            return this.getUppercaseAndNumbers()
         } else {
             return this.getNumbers()
         }
@@ -26,20 +35,26 @@ export class RuleForInput {
     }
     
     getLowerLetters () {
-        if (this.lowerLetters) {
             return /[^a-z^]/
-        }
     }
 
     getUpperLetters () {
-        if (this.upperLetters) {
             return /[^A-Z]/
-        }
+    }
+
+    getLowerAndUpperLetters() {
+        return /[^a-zA-Z]/
+    }
+
+    getLowercaseAndNumbers() {
+        return /[^a-z0-9]/
+    }
+
+    getUppercaseAndNumbers () {
+        return /[^A-Z0-9]/
     }
 
     getNumbers () {
-        if (this.numbers) {
             return /[^0-9]/
-        }
     }
 }

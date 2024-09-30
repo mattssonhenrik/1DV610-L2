@@ -23,6 +23,8 @@ export class BrowserInput {
                     }
                 }
             ))
+        } else if ( event.key === 'Shift' || event.key === 'Alt' || event.key === 'Ctrl' || event.key === 'Control' || event.key === 'Meta' || event.key === 'CapsLock' || event.key === 'ArrowLeft' || event.key === 'ArrowRight' || event.key === 'ArrowUp' || event.key === 'ArrowDown' ) {
+            return
         } else {
             this.keySelected = event.key
             this.totalKeysSelected += event.key

@@ -30,19 +30,20 @@ export class BrowserInputUX {
 
     setColorToWhite() {
         this.inputElement.style.backgroundColor = "White"
+        this.inputElement.style.borderColor = "gray"
     }
 
     setColorToGreen() {
         this.inputElement.style.backgroundColor = "lightGreen"
-        console.log('hello from setcolortogreen!')
+        this.inputElement.style.borderColor = "green"
     }
 
     setColorToRed() {
         this.inputElement.style.backgroundColor = "salmon"
-        console.log('hello from setcolortoSALMON!')
+        this.inputElement.style.borderColor = "red"
     }
 
     setColorToGray() {
-        this.inputelemnent.style.backgroundColor = "gray"
+        this.inputElement.style.backgroundColor = "gray"
     }
 }

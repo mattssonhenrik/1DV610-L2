@@ -13,8 +13,8 @@ export class RuleForInput {
         this.numbers = false
     }
 
-    getChosenRule () {
-        if(this.lowerAndUpperLettersPlusNumbers) {
+    getChosenRule() {
+        if (this.lowerAndUpperLettersPlusNumbers) {
             return this.getLowerAndUpperLettersPlusNumbers()
         } else if (this.lowerLetters) {
             return this.getLowerLetters()
@@ -24,7 +24,7 @@ export class RuleForInput {
             return this.getLowerAndUpperLetters()
         } else if (this.lowerletterAndNumbers) {
             return this.getLowerletterAndNumbers()
-        } else  if (this.upperletterAndNumbers) {
+        } else if (this.upperletterAndNumbers) {
             return this.getUpperletterAndNumbers()
         } else {
             return this.getNumbers()
@@ -34,13 +34,13 @@ export class RuleForInput {
     getLowerAndUpperLettersPlusNumbers() {
         return /[^a-zA-Z0-9]/
     }
-    
-    getLowerLetters () {
-            return /[^a-z^]/
+
+    getLowerLetters() {
+        return /[^a-z^]/
     }
 
-    getUpperLetters () {
-            return /[^A-Z]/
+    getUpperLetters() {
+        return /[^A-Z]/
     }
 
     getLowerAndUpperLetters() {
@@ -51,11 +51,11 @@ export class RuleForInput {
         return /[^a-z0-9]/
     }
 
-    getUpperletterAndNumbers () {
+    getUpperletterAndNumbers() {
         return /[^A-Z0-9]/
     }
 
-    getNumbers () {
-            return /[^0-9]/
+    getNumbers() {
+        return /[^0-9]/
     }
 }

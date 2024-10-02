@@ -22,7 +22,6 @@ export class InputProcessor {
             this.checkValidityOfKey(event)
         })
         this.browserInput.inputElement.addEventListener('checkForInvalidCharacters', (event) => {
-            console.log('Checking for invalid characters from listener checkForInvalidCharacters')
             this.checkForInvalidKeys()
         })
 
@@ -31,7 +30,7 @@ export class InputProcessor {
     selectedKeyToProcess(event) {
         console.log(event.detail.keySelected)
         console.log(event.detail.totalKeysSelected)
-        this.selectedKey = event.detail.keySelected 
+        this.selectedKey = event.detail.keySelected
         this.totaltKeysSelected = event.detail.totalKeysSelected
         this.browserInput.inputElement.dispatchEvent(new CustomEvent('checkValidityOfKey', {
             detail: {
@@ -47,15 +46,13 @@ export class InputProcessor {
         if (regularExpression.test(this.selectedKey)) {
             this.inputElementColor.correctInput = false
             this.inputElementColor.setColor()
-
             document.dispatchEvent(new CustomEvent('incorrectInput'))
-    
         } else {
-            console.log('Valid character!')
+            // Do nothing for now
         }
         this.checkForInvalidKeys()
     }
-    
+
     checkForInvalidKeys() {
         const regularExpression = new RegExp(this.currentRule)
         if (!regularExpression.test(this.totaltKeysSelected)) {

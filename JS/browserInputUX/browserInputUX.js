@@ -8,7 +8,7 @@ export class BrowserInputUX {
         this.totalKeysSelected = ''
 
         this.inputElement.addEventListener('keyPressed', (event) => {
-            this.totalKeysSelected=event.detail.totalKeysSelected
+            this.totalKeysSelected = event.detail.totalKeysSelected
             this.setColor()
         })
 

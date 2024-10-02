@@ -8,16 +8,12 @@ export class BrowserDisplayOutput {
         this.textField = document.querySelector('#text-container')
         this.ruleHandler = new RuleForInput()
 
-        window.addEventListener('load', () => {
-            this.checkRules()
-        })
-
         document.addEventListener('incorrectInput', (event) => {
-            this.textField.style.color= "red"
+            this.textField.style.color = "red"
         })
 
         document.addEventListener('correctInput', (event) => {
-            this.textField.style.color= "black"
+            this.textField.style.color = "black"
         })
     }
 
@@ -31,7 +27,7 @@ export class BrowserDisplayOutput {
             this.textField.textContent = 'Only uppercase letters'
         } else if (this.ruleHandler.lowerAndUpperLetters) {
             this.textField.textContent = 'Only lower- and uppercase letters'
-        } else if (this.ruleHandler.lowercaseAndNumbers){
+        } else if (this.ruleHandler.lowercaseAndNumbers) {
             this.textField.textContent = 'Only lowercase letters and numbers'
         } else if (this.ruleHandler.uppercaseAndNumbers) {
             this.textField.textContent = 'Only uppercase letters and numbers'

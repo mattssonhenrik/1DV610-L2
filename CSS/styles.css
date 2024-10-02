@@ -21,6 +21,7 @@ html, body {
     border-radius:5px;
     font-size: 3vh;
     outline: none;
+    transition: background-color 0.4s, border-color 0.4s;
 }
 
 #input-container {

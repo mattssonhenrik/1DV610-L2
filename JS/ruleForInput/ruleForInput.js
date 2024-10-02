@@ -4,8 +4,8 @@
 export class RuleForInput {
     constructor() {
         // Only one rule can be applicable at the same time
-        this.lowerAndUpperLettersPlusNumbers = true
-        this.lowerLetters = false
+        this.lowerAndUpperLettersPlusNumbers = false
+        this.lowerLetters = true
         this.upperLetters = false
         this.lowerAndUpperLetters = false
         this.lowerletterAndNumbers = false

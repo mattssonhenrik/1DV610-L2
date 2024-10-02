@@ -1,5 +1,36 @@
 > We only need to change the rules to test different aspects of the application.
 
+
+
+| What was tested                                   | How it was tested                                                                                       | Test result                                                    |
+|---------------------------------------------------|----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| Header display: lowerAndUpperLettersPlusNumbers   | Loaded the page with `lowerAndUpperLettersPlusNumbers = true`, checked header text                        | Worked as expected                                             |
+| Header display: lowerLetters                      | Loaded the page with `lowerLetters = true`, checked header text                                           | Worked as expected                                             |
+| Header display: upperLetters                      | Loaded the page with `upperLetters = true`, checked header text                                           | Worked as expected                                             |
+| Header display: lowerAndUpperLetters              | Loaded the page with `lowerAndUpperLetters = true`, checked header text                                   | Worked as expected                                             |
+| Header display: lowerLetterAndNumbers             | Loaded the page with `lowerLetterAndNumbers = true`, checked header text                                  | Worked as expected                                             |
+| Header display: upperLetterAndNumbers             | Loaded the page with `upperLetterAndNumbers = true`, checked header text                                  | Worked as expected                                             |
+| Header display: numbers                           | Loaded the page with `numbers = true`, checked header text                                                | Worked as expected                                             |
+| Valid input: lowerAndUpperLettersPlusNumbers      | Entered "testTEST1234" with `lowerAndUpperLettersPlusNumbers = true`                                      | Worked as expected                                             |
+| Invalid input: lowerAndUpperLettersPlusNumbers    | Entered "testTEST1234!\"#€" with `lowerAndUpperLettersPlusNumbers = true`                                 | Worked as expected                                             |
+| Valid input: lowerLetters                        | Entered "test" with `lowerLetters = true`                                                                 | Worked as expected                                             |
+| Invalid input: lowerLetters                      | Entered "testTEST" with `lowerLetters = true`                                                             | Worked as expected                                             |
+| Valid input: upperLetters                        | Entered "TEST" with `upperLetters = true`                                                                 | Worked as expected                                             |
+| Invalid input: upperLetters                      | Entered "TESTtest" with `upperLetters = true`                                                             | Worked as expected                                             |
+| Valid input: lowerAndUpperLetters                | Entered "testTEST" with `lowerAndUpperLetters = true`                                                     | Worked as expected                                             |
+| Invalid input: lowerAndUpperLetters              | Entered "testTEST1234" with `lowerAndUpperLetters = true`                                                 | Worked as expected                                             |
+| Valid input: lowerLetterAndNumbers               | Entered "test1234" with `lowerLetterAndNumbers = true`                                                    | Worked as expected                                             |
+| Invalid input: lowerLetterAndNumbers             | Entered "test1234TEST" with `lowerLetterAndNumbers = true`                                                | Worked as expected                                             |
+| Valid input: upperLetterAndNumbers               | Entered "TEST1234" with `upperLetterAndNumbers = true`                                                    | Worked as expected                                             |
+| Invalid input: upperLetterAndNumbers             | Entered "TEST1234test" with `upperLetterAndNumbers = true`                                                | Worked as expected                                             |
+| Valid input: numbers                             | Entered "1234" with `numbers = true`                                                                      | Worked as expected                                             |
+| Invalid input: numbers                           | Entered "1234test" with `numbers = true`                                                                  | Worked as expected                                             |
+| Reset input field after removing all text        | Entered "testBeforeRemovingInput", removed all text using `Backspace`, checked if the field returned to white | Worked as expected                                             |
+| Pasting invalid input: lowerAndUpperLettersPlusNumbers | Pasted "testTEST1234!\"#€" with `lowerAndUpperLettersPlusNumbers = true`                                   | **Did NOT work as expected** (field turned green instead of red) |
+
+
+
+
 # 1. Displayed text header above input field depending on the chosen rule
 ## 1.1 lowerAndUpperLettersPlusNumbers 
 ### Preconditions
@@ -303,3 +334,46 @@ The input field and the header text should turn red
 ### Output
 Works as expected
 ![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.7/invalidNumbers.png)
+
+# 3. Test if the input field is restored to default if all text is removed
+### 3.1 Valid input
+### Preconditions
+Load the page with the following rule:  
+this.lowerAndUpperLettersPlusNumbers = true  
+### Expected Output
+The input field should turn green
+### Input
+testBeforeRemovingInput
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/TestCases%203/testBeforeRemovingInput.png)
+
+### 3.2 Remove input
+### Preconditions
+Load the page with the following rule:  
+this.lowerAndUpperLettersPlusNumbers = true  
+  
+  Add the following to the input field:  
+  testBeforeRemovingInput
+### Expected Output
+The input field should turn white
+### Input
+Remove all values from the input field
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/TestCases%203/testAfterRemovingInput.png)
+
+# 4. Add input through copying and pasting instead of typing
+### 4.1 Pasting input
+### Preconditions
+Load the page with the following rule:  
+this.lowerAndUpperLettersPlusNumbers = true  
+### Expected Output
+The input field and the header text should turn red
+### Input
+testTEST1234!"#€ (through copy + paste)
+### Output
+Did NOT work as expected, the input field turns green.
+![Image over tested rule](/ASSETS/TESTPICTURES/TestCases%204/copyAndPasteInput.png)
+
+I suspect the application register the v instead of the actual word.

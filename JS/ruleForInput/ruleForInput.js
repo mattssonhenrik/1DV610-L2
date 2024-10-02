@@ -1,5 +1,10 @@
-// ruleforInput.js
-// Author Henrik Mattsson
+/**
+ * RuleForInput is responsible for managing and returning the active input validation rule.
+ * It provides several predefined rules for allowed characters, such as lowercase letters, 
+ * uppercase letters, numbers, and combinations of these. Only one rule can be active at a time.
+ * 
+ * @author Henrik Mattsson
+ */
 
 export class RuleForInput {
     constructor() {
@@ -13,6 +18,12 @@ export class RuleForInput {
         this.numbers = false
     }
 
+    /**
+     * Returns the regular expression for the currently active input validation rule.
+     * It checks which rule is the first rule set to `true` and returns the corresponding regex.
+     * 
+     * @returns {RegExp} The regular expression of the active rule.
+     */
     getChosenRule() {
         if (this.lowerAndUpperLettersPlusNumbers) {
             return this.getLowerAndUpperLettersPlusNumbers()

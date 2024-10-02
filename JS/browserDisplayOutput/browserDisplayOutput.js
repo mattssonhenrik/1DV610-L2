@@ -1,5 +1,11 @@
-// browserDisplayOutput.js
-// Author Henrik Mattsson
+/**
+ * BrowserDisplayOutput is responsible for managing the text display based on input rules and input correctness.
+ * It listens for 'incorrectInput' and 'correctInput' events to change the text color.
+ * It also checks the current rule set and updates the displayed message accordingly.
+ * 
+ * @author Henrik Mattsson
+ */
+
 
 import { RuleForInput } from '../ruleForInput/ruleForInput.js'
 
@@ -17,7 +23,10 @@ export class BrowserDisplayOutput {
         })
     }
 
-
+    /**
+     * Checks the current active input rule from RuleForInput and updates the text container with the appropriate message.
+     * It displays which types of input (e.g., lowercase, uppercase, numbers) are allowed based on the rule set.
+     */
     checkRules() {
         if (this.ruleHandler.lowerAndUpperLettersPlusNumbers) {
             this.textField.textContent = 'Upper- and lowercase letters and numbers are valid'

@@ -1,5 +1,10 @@
-// browserInput.js
-// Author: Henrik Mattsson
+/**
+ * BrowserInput is responsible for managing the key input from the user.
+ * It stores the selected key and maintains a cumulative string of all keys pressed.
+ * It dispatches a 'keyPressed' event whenever a valid key is pressed.
+ * 
+ * @author Henrik Mattsson
+ */
 
 export class BrowserInput {
     constructor() {
@@ -12,6 +17,13 @@ export class BrowserInput {
         })
     }
 
+    /**
+     * Handles key presses and updates the `keySelected` and `totalKeysSelected` values.
+     * If the 'Backspace' key is pressed, it updates the totalKeysSelected after a brief timeout.
+     * It ignores certain control keys (e.g., Shift, Alt, Ctrl) and dispatches a custom 'keyPressed' event with the updated values.
+     * 
+     * @param {KeyboardEvent} event - The keydown event triggered by the user.
+     */
     storeKeyPress(event) {
         if (event.key === 'Backspace') {
             setTimeout(() => { // Should refactor to trigger Backspace on keyup instead of keydown because keydown stores the value before the Backspace executes, a timeout fixed this.
@@ -42,13 +54,5 @@ export class BrowserInput {
                 }
             ))
         }
-    }
-
-    getKeyPress() {
-        return this.keySelected
-    }
-
-    getTotalKeysSelected() {
-        return this.totalKeysSelected
     }
 }

@@ -102,6 +102,8 @@ An an empty inputfield and a header text that is: Only lower- and uppercase lett
         this.upperLetterAndNumbers = false
         this.numbers = false
 ### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/TestCases%201/lowerAndUpperLetters.png)
 
 ## 1.5 lowerletterAndNumbers 
 ### Preconditions

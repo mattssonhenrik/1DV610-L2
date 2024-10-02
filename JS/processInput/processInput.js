@@ -1,5 +1,10 @@
-// processInput.js
-// Author: Henrik Mattsson
+/**
+ * InputProcessor is responsible for processing input events, validating input based on predefined rules,
+ * and updating the input field's appearance through the BrowserInputUX class. It listens for custom events
+ * related to key presses and input validation.
+ * 
+ * @author Henrik Mattsson
+ */
 
 import { BrowserInput } from '../browserInput/browserInput.js'
 import { RuleForInput } from '../ruleForInput/ruleForInput.js'
@@ -27,6 +32,12 @@ export class InputProcessor {
 
     }
 
+    /**
+     * Processes the key pressed by the user and updates the selectedKey and totalKeysSelected properties.
+     * It dispatches a custom event to check the validity of the selected key.
+     * 
+     * @param {CustomEvent} event - The custom 'keyPressed' event dispatched by BrowserInput.
+     */
     selectedKeyToProcess(event) {
         this.selectedKey = event.detail.keySelected
         this.totaltKeysSelected = event.detail.totalKeysSelected
@@ -37,6 +48,12 @@ export class InputProcessor {
         }))
     }
 
+    /**
+     * Validates the selected key against the active input rule. If the key does not pass the rule, 
+     * it triggers an event to update the input field to indicate incorrect input.
+     * 
+     * @param {CustomEvent} event - The custom 'checkValidityOfKey' event dispatched by selectedKeyToProcess.
+     */
     checkValidityOfKey(event) {
         this.currentRule = this.ruleHandler.getChosenRule()
         const regularExpression = new RegExp(this.currentRule)
@@ -50,6 +67,10 @@ export class InputProcessor {
         this.checkForInvalidKeys()
     }
 
+    /**
+     * Validates the entire input string (totalKeysSelected) against the active input rule.
+     * If the string is valid, it updates the input field to indicate correct input and dispatches a custom event.
+     */
     checkForInvalidKeys() {
         const regularExpression = new RegExp(this.currentRule)
         if (!regularExpression.test(this.totaltKeysSelected)) {

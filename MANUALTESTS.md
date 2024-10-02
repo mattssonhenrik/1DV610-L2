@@ -21,7 +21,8 @@ Works as expected
 
 ## 1.2 lowerLetters 
 ### Preconditions
-Load the page with the following rule:
+Load the page with the following rule:  
+        this.lowerLetters = true
 ### Expected Output
 An an empty inputfield and a header text that is: Only lowercase letters
 ### Input
@@ -38,7 +39,8 @@ Works as expected
 
 ## 1.3 upperLetters 
 ### Preconditions
-Load the page with the following rule:
+Load the page with the following rule:  
+        this.upperLetters = true
 ### Expected Output
 An an empty inputfield and a header text that is: Only uppercase letters
 ### Input
@@ -56,7 +58,8 @@ Works as expected
 
 ## 1.4 lowerAndUpperLetters 
 ### Preconditions
-Load the page with the following rule:
+Load the page with the following rule:  
+        this.lowerAndUpperLetters = true
 ### Expected Output
 An an empty inputfield and a header text that is: Only lower- and uppercase letters
 ### Input
@@ -71,7 +74,8 @@ An an empty inputfield and a header text that is: Only lower- and uppercase lett
 
 ## 1.5 lowerletterAndNumbers 
 ### Preconditions
-Load the page with the following rule:
+Load the page with the following rule:  
+        this.lowerLetterAndNumbers = true
 ### Expected Output
 An an empty inputfield and a header text that is: Only lowercase letters and numbers
 ### Input
@@ -88,7 +92,8 @@ Works as expected
 
 ## 1.6 upperletterAndNumbers 
 ### Preconditions
-Load the page with the following rule:
+Load the page with the following rule:  
+        this.upperLetterAndNumbers = true
 ### Expected Output
 An an empty inputfield and a header text that is: Only uppercase letters and numbers
 ### Input
@@ -105,7 +110,8 @@ Works as expected
 
 ## 1.7 numbers 
 ### Preconditions
-Load the page with the following rule:
+Load the page with the following rule:  
+        this.numbers = true
 ### Expected Output
 An an empty inputfield and a header text that is: Only numbers (0-9)'
 ### Input
@@ -122,49 +128,178 @@ Works as expected
 
 
 
+# 2. Valid and invalid input to each rule
+## 2.1 lowerAndUpperLettersPlusNumbers 
+### 2.1.1 Valid input
+### Preconditions
+Load the page with the following rule:  
+this.lowerAndUpperLettersPlusNumbers = true  
+### Expected Output
+The input field should turn green
+### Input
+Enter testTEST1234
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.1/validLowerAndUpperLettersPlusNumbers.png)
 
+### 2.1.2 Invalid input
+### Preconditions
+Load the page with the following rule:  
+this.lowerAndUpperLettersPlusNumbers = true  
+### Expected Output
+The input field and the header text should turn red
+### Input
+Enter testTEST1234!"#€
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.1/invalidLowerAndUpperLettersPlusNumbers.png)
 
+## 2.2 lowerLetters 
+### 2.2.1 Valid input
+### Preconditions
+Load the page with the following rule:  
+        this.lowerLetters = true
+### Expected Output
+The input field should turn green
+### Input
+test
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.2/validLowerLetters.png)
 
+### 2.2.2 Invalid input
+### Preconditions
+Load the page with the following rule:  
+        this.lowerLetters = true
+### Expected Output
+The input field and the header text should turn red
+### Input
+testTEST
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.2/invalidLowerLetters.png)
 
-# 1. Displayed rules depending on the chosen rule
-## 1.1 lowerAndUpperLettersPlusNumbers 
+## 2.3 upperLetters 
+### 2.3.1 Valid input
+Load the page with the following rule:  
+        this.upperLetters = true
 ### Preconditions
 ### Expected Output
+The input field should turn green
 ### Input
+TEST
 ### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.3/validUpperLetters.png)
 
-## 1.2 lowerLetters 
+### 2.3.2 Invalid input
 ### Preconditions
+Load the page with the following rule:  
+        this.upperLetters = true
 ### Expected Output
+The input field and the header text should turn red
 ### Input
+TESTtest
 ### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.3/invalidUpperLetters.png)
 
-## 1.3 upperLetters 
+## 2.4 lowerAndUpperLetters 
+### 2.4.1 Valid input
 ### Preconditions
+Load the page with the following rule:  
+        this.lowerAndUpperLetters = true
 ### Expected Output
+The input field should turn green
 ### Input
+testTEST
 ### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.4/validLowerAndUpperLetters.png)
 
-## 1.4 lowerAndUpperLetters 
+### 2.4.2 Invalid input
 ### Preconditions
+Load the page with the following rule:  
+        this.lowerAndUpperLetters = true
 ### Expected Output
+The input field and the header text should turn red
 ### Input
+testTEST1234
 ### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.4/invalidLowerAndUpperLetters.png)
 
-## 1.5 lowerletterAndNumbers 
+## 2.5 lowerletterAndNumbers 
+### 2.5.1 Valid input
 ### Preconditions
+Load the page with the following rule:  
+        this.lowerLetterAndNumbers = true
 ### Expected Output
+The input field should turn green
 ### Input
+test1234
 ### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.5/validLowerLetterAndNumbers.png)
 
-## 1.6 upperletterAndNumbers 
+### 2.5.2 Invalid input
 ### Preconditions
+Load the page with the following rule:  
+        this.lowerLetterAndNumbers = true
 ### Expected Output
+The input field and the header text should turn red
 ### Input
+test1234TEST
 ### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.5/invalidLowerLetterAndNumbers.png)
 
-## 1.7 numbers 
+## 2.6 upperletterAndNumbers 
+### 2.6.1 Valid input
 ### Preconditions
+Load the page with the following rule:  
+        this.upperLetterAndNumbers = true
 ### Expected Output
+The input field should turn green
 ### Input
+TEST1234
 ### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.6/validLowerLetterAndNumbers.png)
+
+### 2.6.2 Invalid input
+### Preconditions
+Load the page with the following rule:  
+        this.upperLetterAndNumbers = true
+### Expected Output
+The input field and the header text should turn red
+### Input
+TEST1234test
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.6/invalidLowerLetterAndNumbers.png)
+
+## 2.7 numbers 
+### 2.7.1 Valid input
+### Preconditions
+Load the page with the following rule:  
+        this.numbers = true
+### Expected Output
+The input field should turn green
+### Input
+1234
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.7/validNumbers.png)
+
+### 2.7.2 Invalid input
+### Preconditions
+Load the page with the following rule:  
+        this.numbers = true
+### Expected Output
+The input field and the header text should turn red
+### Input
+1234test
+### Output
+Works as expected
+![Image over tested rule](/ASSETS/TESTPICTURES/Testcases%202/2.7/invalidNumbers.png)

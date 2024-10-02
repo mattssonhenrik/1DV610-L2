@@ -11,7 +11,6 @@ export class BrowserInputUX {
             this.totalKeysSelected = event.detail.totalKeysSelected
             this.setColor()
         })
-
         this.inputElement.style.backgroundColor = "White"
     }
 

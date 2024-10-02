@@ -42,17 +42,7 @@ export class BrowserInput {
                 }
             ))
         }
-
     }
-
-    // removeLastEntry(inputValue) {
-    //     // this.totalKeysSelected = this.totalKeysSelected.slice(0, -1)
-
-    //     for (let i = 0; i < inputValue.length; i++) {
-
-    //     }
-    //     return inputValueAfterBackspace
-    // }
 
     getKeyPress() {
         return this.keySelected

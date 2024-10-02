@@ -27,9 +27,9 @@ export class BrowserDisplayOutput {
             this.textField.textContent = 'Only uppercase letters'
         } else if (this.ruleHandler.lowerAndUpperLetters) {
             this.textField.textContent = 'Only lower- and uppercase letters'
-        } else if (this.ruleHandler.lowercaseAndNumbers) {
+        } else if (this.ruleHandler.lowerLetterAndNumbers) {
             this.textField.textContent = 'Only lowercase letters and numbers'
-        } else if (this.ruleHandler.uppercaseAndNumbers) {
+        } else if (this.ruleHandler.upperLetterAndNumbers) {
             this.textField.textContent = 'Only uppercase letters and numbers'
         } else {
             this.textField.textContent = 'Only numbers (0-9)'

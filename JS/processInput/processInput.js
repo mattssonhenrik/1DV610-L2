@@ -28,8 +28,6 @@ export class InputProcessor {
     }
 
     selectedKeyToProcess(event) {
-        console.log(event.detail.keySelected)
-        console.log(event.detail.totalKeysSelected)
         this.selectedKey = event.detail.keySelected
         this.totaltKeysSelected = event.detail.totalKeysSelected
         this.browserInput.inputElement.dispatchEvent(new CustomEvent('checkValidityOfKey', {
@@ -42,7 +40,6 @@ export class InputProcessor {
     checkValidityOfKey(event) {
         this.currentRule = this.ruleHandler.getChosenRule()
         const regularExpression = new RegExp(this.currentRule)
-
         if (regularExpression.test(this.selectedKey)) {
             this.inputElementColor.correctInput = false
             this.inputElementColor.setColor()

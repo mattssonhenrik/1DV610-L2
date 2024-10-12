@@ -1,12 +1,30 @@
 export class OutputColorToBrowser {
     constructor () {
-        this.inputElement = document.querySelector("input")
         this.correctInput = true
 
-        this.inputElement.addEventListener("keyPressed", (event) => {
-            this.setColor()
+        this.inputElement = document.querySelector("input")
+        // this.inputElement.style.backgroundColor = "White"
+        // this.inputElement.addEventListener("keyPressed", (event) => {
+        //     this.setColor()
+        // })
+
+        document.addEventListener("correctInput", (event) => {
+            this.setCorrectInput()
         })
-        this.inputElement.style.backgroundColor = "White"
+
+        document.addEventListener("incorrectInput", (event) => {
+            this.setIncorrectInput()
+        })
+    }
+
+    setCorrectInput() {
+        this.correctInput = true
+        this.setColor()
+    }
+
+    setIncorrectInput() {
+        this.correctInput = false
+        this.setColor()
     }
 
 

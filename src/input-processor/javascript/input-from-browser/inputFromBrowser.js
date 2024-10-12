@@ -9,7 +9,7 @@ export class InputFromBrowser {
     }
 
     dispatchCustomEvent(event) {
-        this.dispatchEvent(new CustomEvent('keyPressed',
+        dispatchEvent(new CustomEvent('keyPressed',
             {
                 detail: {
                     keyPressed: event.key

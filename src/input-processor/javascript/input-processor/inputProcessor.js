@@ -11,7 +11,7 @@ export class InputProcessor {
 
         this.inputElement = document.querySelector("input")
 
-        document.addEventListener("keyPressed", event => {
+        this.inputElement.addEventListener("keyPressed", event => {
             this.isInputValid(event.detail.keyPressed)
         })
     }
@@ -26,16 +26,16 @@ export class InputProcessor {
 
     processInvalidInput(keyPressed) {
         if (keyPressed === 'Backspace') {
-            processBackspace()
+            this.processBackspace()
         } else if (keyPressed === 'Shift' || keyPressed === 'Alt' || keyPressed === 'Ctrl' || keyPressed === 'Control' || keyPressed === 'Meta' || keyPressed === 'CapsLock' || keyPressed === 'ArrowLeft' || keyPressed === 'ArrowRight' || keyPressed === 'ArrowUp' || keyPressed === 'ArrowDown') {
-            processSpecialKey()
+            this.processSpecialKey()
         } else {
-            processInvalidKey()
+            this.processInvalidKey()
         }
     }
 
     processValidInput() {
-        // Do nothing for now, intentionally.
+        this.processBackspace()
     }
 
     processBackspace() {

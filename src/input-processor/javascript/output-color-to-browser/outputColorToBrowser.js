@@ -24,7 +24,9 @@ export class OutputColorToBrowser {
 
     setIncorrectInput() {
         this.correctInput = false
-        this.setColor()
+        setTimeout(() => {
+            this.setColor()
+        }, 1)
     }
 
 

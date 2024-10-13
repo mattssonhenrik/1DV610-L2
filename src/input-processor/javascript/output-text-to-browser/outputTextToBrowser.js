@@ -2,7 +2,7 @@ import { InputRule } from '../input-rules/inputRules.js'
 
 export class OutputTextToBrowser {
     constructor () {
-        this.textField = document.querySelector("#text-container")
+        this.textField = document.querySelector(".text-container")
         this.ruleHandler = new InputRule()
 
         document.addEventListener('incorrectInput', (event) => {

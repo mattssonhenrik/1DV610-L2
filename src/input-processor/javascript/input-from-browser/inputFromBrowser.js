@@ -1,6 +1,6 @@
 export class InputFromBrowser {
     constructor() {
-        this.inputElement = document.querySelector("input")
+        this.inputElement = document.querySelector(".filter")
         // this.keyPressed = ''
 
         this.inputElement.addEventListener("keydown", event => {

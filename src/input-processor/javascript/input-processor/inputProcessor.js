@@ -9,7 +9,7 @@ export class InputProcessor {
         this.ruleSelected = this.ruleHandler.getChosenRule()
         this.regex = new RegExp(this.ruleSelected)
 
-        this.inputElement = document.querySelector("input")
+        this.inputElement = document.querySelector(".filter")
 
         this.inputElement.addEventListener("keyPressed", event => {
             this.isInputValid(event.detail.keyPressed)

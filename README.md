@@ -1,7 +1,7 @@
 # 1DV610-L2
 
 **Version 2.0.0**
-- **Code Refactoring**: Improved code structure for better readability and maintainability.
+Code Refactoring: Improved code structure for better readability.
 
 # Input Processor
 

@@ -1,57 +1,68 @@
-import { InputRule } from '../input-rules/inputRules.js'
 import { OutputColorToBrowser } from '../output-color-to-browser/outputColorToBrowser.js'
+import { OutputTextToBrowser } from '../output-text-to-browser/outputTextToBrowser.js'
+import { InputFromBrowser } from '../input-from-browser/inputFromBrowser.js'
+import { InputRule } from '../input-rules/inputRules.js'
 
-
+/**
+ * Processes user input, validates it against a defined rule, and triggers appropriate actions for valid/invalid input.
+ */
 export class InputProcessor {
-    constructor() {
+    /**
+     * Initializes a new instance of the InputProcessor class.
+     * Sets up input handling, color changes, and validation based on the provided rule handler.
+     * 
+     */
+    constructor(ruleHandler) {
+        this.inputFromBrowser = new InputFromBrowser()
         this.inputElementColorChanger = new OutputColorToBrowser()
         this.ruleHandler = new InputRule()
-        this.ruleSelected = this.ruleHandler.getChosenRule()
-        this.regex = new RegExp(this.ruleSelected)
-
+        this.regex = new RegExp(this.ruleHandler.getChosenRule())
         this.inputElement = document.querySelector(".filter")
 
-        this.inputElement.addEventListener("keyPressed", event => {
-            this.isInputValid(event.detail.keyPressed)
-        })
+        this.outputTextToBrowser = new OutputTextToBrowser(ruleHandler)
+        this.outputTextToBrowser.checkRules()
+
+        if(this.inputElement !== null) {
+            this.inputElement.addEventListener("keyPressed", () => {
+                let currentInput = this.inputElement.value
+                this.isInputValid(currentInput)
+            })
+        }
     }
 
-    isInputValid(keyPressed) {
-        if (this.regex.test(keyPressed)) {
-            this.processInvalidInput(keyPressed)
+    /**
+     * Updates the input validation rules with a new rule handler.
+     * 
+     * @param {InputRule} newRuleHandler - The new rule handler to update the validation rules.
+     */
+    updateRules(newRuleHandler) {
+        this.ruleHandler = newRuleHandler
+        this.regex = new RegExp(this.ruleHandler.getChosenRule())
+    }
+
+    /**
+     * Validates the current input against the active regular expression rule.
+     * Triggers events for valid or invalid input accordingly.
+     */
+    isInputValid(currentInput) {
+        if (this.regex.test(currentInput)) {
+            this.processInvalidInput()
         } else {
             this.processValidInput()
         }
     }
 
-    processInvalidInput(keyPressed) {
-        if (keyPressed === 'Backspace') {
-            this.processBackspace()
-        } else if (keyPressed === 'Shift' || keyPressed === 'Alt' || keyPressed === 'Ctrl' || keyPressed === 'Control' || keyPressed === 'Meta' || keyPressed === 'CapsLock' || keyPressed === 'ArrowLeft' || keyPressed === 'ArrowRight' || keyPressed === 'ArrowUp' || keyPressed === 'ArrowDown') {
-            this.processSpecialKey()
-        } else {
-            this.processInvalidKey()
-        }
-    }
-
-    processValidInput() {
-        this.processBackspace()
-    }
-
-    processBackspace() {
-        setTimeout(() => {
-            let charactersInInput = this.inputElement.value
-            if(!this.regex.test(charactersInInput)) {
-                document.dispatchEvent(new CustomEvent("correctInput"))
-            }
-        }, 1)
-    }
-
-    processSpecialKey() {
-        return
-    }
-
-    processInvalidKey() {
+    /**
+     * Dispatches a custom "incorrectInput" event when the input is invalid.
+     */
+    processInvalidInput() {
         document.dispatchEvent(new CustomEvent("incorrectInput"))
+    }
+
+    /**
+     * Dispatches a custom "correctInput" event when the input is valid.
+     */
+    processValidInput() {
+        document.dispatchEvent(new CustomEvent("correctInput"))
     }
 }
